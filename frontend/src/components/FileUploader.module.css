@@ -1,0 +1,53 @@
+.zone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--surface);
+  user-select: none;
+  min-width: 220px;
+}
+
+.zone:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+
+.dragging {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  box-shadow: 0 0 0 4px rgba(99, 179, 237, 0.15);
+}
+
+.filled {
+  border-color: var(--success);
+  border-style: solid;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.filename {
+  font-size: 0.85rem;
+  color: var(--success);
+  font-family: 'JetBrains Mono', monospace;
+  word-break: break-all;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}

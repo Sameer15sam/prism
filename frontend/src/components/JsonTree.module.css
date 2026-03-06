@@ -1,0 +1,75 @@
+.row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 2px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+}
+
+.block {
+    margin: 2px 0;
+}
+
+.children {
+    margin-left: 1.2rem;
+    border-left: 1px solid var(--border);
+    padding-left: 0.75rem;
+}
+
+.collapsible {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 3px 0;
+    border-radius: 4px;
+    transition: background 0.1s;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+}
+
+.collapsible:hover {
+    background: var(--surface-hover);
+}
+
+.toggle {
+    font-size: 0.65rem;
+    color: var(--fg-muted);
+    width: 12px;
+}
+
+.key {
+    color: var(--json-key);
+    font-weight: 500;
+}
+
+.string {
+    color: var(--json-string);
+}
+
+.number {
+    color: var(--json-number);
+}
+
+.boolTrue {
+    color: var(--success);
+}
+
+.boolFalse {
+    color: var(--warning);
+}
+
+.nullVal {
+    color: var(--fg-muted);
+    font-style: italic;
+}
+
+.empty {
+    color: var(--fg-muted);
+}
+
+.meta {
+    color: var(--fg-muted);
+    font-size: 0.75rem;
+}

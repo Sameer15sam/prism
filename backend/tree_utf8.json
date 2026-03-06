@@ -1,0 +1,85 @@
+{
+  "ue_eutra_capability": {
+    "ue_category": "6",
+    "ue_category_ul": "5",
+    "rf_parameters": {
+      "supported_band_list_eutra": {
+        "bandeutra": [
+          {
+            "band_eutra": "1",
+            "dl_mimo_layers": "4",
+            "ul_mimo_layers": "1",
+            "dl_256qam": "true",
+            "ul_64qam": "false"
+          },
+          {
+            "band_eutra": "3",
+            "dl_mimo_layers": "4",
+            "ul_mimo_layers": "1",
+            "dl_256qam": "true",
+            "ul_64qam": "false"
+          },
+          {
+            "band_eutra": "7",
+            "dl_mimo_layers": "2",
+            "ul_mimo_layers": "1",
+            "dl_256qam": "false",
+            "ul_64qam": "false"
+          },
+          {
+            "band_eutra": "28",
+            "dl_mimo_layers": "2",
+            "ul_mimo_layers": "1",
+            "dl_256qam": "false",
+            "ul_64qam": "false"
+          },
+          {
+            "band_eutra": "20",
+            "dl_mimo_layers": "2",
+            "ul_mimo_layers": "1",
+            "dl_256qam": "false",
+            "ul_64qam": "false"
+          },
+          {
+            "band_eutra": "41",
+            "dl_mimo_layers": "4",
+            "ul_mimo_layers": "2",
+            "dl_256qam": "true",
+            "ul_64qam": "true"
+          }
+        ]
+      },
+      "supported_band_combination_list": {
+        "band_combination": [
+          {
+            "band_eutra": [
+              "1",
+              "3"
+            ],
+            "bw_class_dl": "A",
+            "bw_class_ul": "A"
+          },
+          {
+            "band_eutra": [
+              "1",
+              "7"
+            ],
+            "bw_class_dl": "A",
+            "bw_class_ul": "A"
+          },
+          {
+            "band_eutra": [
+              "3",
+              "20"
+            ],
+            "bw_class_dl": "A",
+            "bw_class_ul": "A"
+          }
+        ]
+      }
+    },
+    "feature_group_indicators": "1100111001010011101010100001",
+    "supported_roh_c": "true",
+    "supported_rlc_um": "true"
+  }
+}

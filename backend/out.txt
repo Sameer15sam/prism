@@ -1,0 +1,28 @@
+﻿F........F............F..                                                [100%]
+================================== FAILURES ===================================
+___________________ TestLTEParsing.test_rat_detected_as_lte ___________________
+tests\test_parser.py:43: in test_rat_detected_as_lte
+    assert self.cap.rat == "LTE", f"Expected LTE, got {self.cap.rat}"
+E   AssertionError: Expected LTE, got MULTI
+E   assert 'MULTI' == 'LTE'
+E     
+E     - LTE
+E     + MULTI
+_______________________ TestLTEParsing.test_nr_is_none ________________________
+tests\test_parser.py:82: in test_nr_is_none
+    assert self.cap.nr is None
+E   AssertionError: assert NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], dl_bw_class=No...ACombo(bands=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None) is None
+E    +  where NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], dl_bw_class=No...ACombo(bands=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None) = NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='6', ue_categ..., 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]).nr
+E    +    where NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='6', ue_categ..., 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]) = <test_parser.TestLTEParsing object at 0x000001EE131CD4F0>.cap
+_______________________ TestEdgeCases.test_empty_input ________________________
+tests\test_parser.py:170: in test_empty_input
+    assert cap.rat == "UNKNOWN"
+E   AssertionError: assert 'NR' == 'UNKNOWN'
+E     
+E     - UNKNOWN
+E     + NR
+=========================== short test summary info ===========================
+FAILED tests/test_parser.py::TestLTEParsing::test_rat_detected_as_lte - Asser...
+FAILED tests/test_parser.py::TestLTEParsing::test_nr_is_none - AssertionError...
+FAILED tests/test_parser.py::TestEdgeCases::test_empty_input - AssertionError...
+3 failed, 22 passed in 0.42s

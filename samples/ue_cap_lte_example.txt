@@ -1,0 +1,87 @@
+# UE Capability Parser – Synthetic Sample Logs
+#
+# This is a HANDWRITTEN, minimal decoded RRC UE Capability log
+# simulating a Qualcomm-like QCAT decoded output for a dual-band LTE device.
+#
+# Format: key : value pairs, nested blocks with { }
+# This is NOT real proprietary data. It is a synthetic example for testing.
+#
+# Spec reference: 3GPP TS 36.331 §6.3.6 (UE-EUTRA-Capability)
+#                 3GPP TS 36.306        (UE Radio Access Capabilities)
+
+ue_eutra_capability {
+    ue_category : 6
+    ue_category_ul : 5
+
+    rf_parameters {
+        supported_band_list_eutra {
+            bandEUTRA {
+                band_eutra : 1
+                dl_mimo_layers : 4
+                ul_mimo_layers : 1
+                dl_256qam : true
+                ul_64qam : false
+            }
+            bandEUTRA {
+                band_eutra : 3
+                dl_mimo_layers : 4
+                ul_mimo_layers : 1
+                dl_256qam : true
+                ul_64qam : false
+            }
+            bandEUTRA {
+                band_eutra : 7
+                dl_mimo_layers : 2
+                ul_mimo_layers : 1
+                dl_256qam : false
+                ul_64qam : false
+            }
+            bandEUTRA {
+                band_eutra : 28
+                dl_mimo_layers : 2
+                ul_mimo_layers : 1
+                dl_256qam : false
+                ul_64qam : false
+            }
+            bandEUTRA {
+                band_eutra : 20
+                dl_mimo_layers : 2
+                ul_mimo_layers : 1
+                dl_256qam : false
+                ul_64qam : false
+            }
+            bandEUTRA {
+                band_eutra : 41
+                dl_mimo_layers : 4
+                ul_mimo_layers : 2
+                dl_256qam : true
+                ul_64qam : true
+            }
+        }
+
+        supported_band_combination_list {
+            band_combination {
+                band_eutra : 1
+                band_eutra : 3
+                bw_class_dl : A
+                bw_class_ul : A
+            }
+            band_combination {
+                band_eutra : 1
+                band_eutra : 7
+                bw_class_dl : A
+                bw_class_ul : A
+            }
+            band_combination {
+                band_eutra : 3
+                band_eutra : 20
+                bw_class_dl : A
+                bw_class_ul : A
+            }
+        }
+    }
+
+    feature_group_indicators : 1100111001010011101010100001
+    supported_roh_c : true
+    supported_rlc_um : true
+}

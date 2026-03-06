@@ -1,0 +1,158 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sectionLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+.tableScroll {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    background: var(--surface);
+}
+
+.table th {
+    padding: 0.65rem 1rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:hover td {
+    background: rgba(99, 179, 237, 0.05);
+}
+
+.rowTDD td {
+    border-left: 2px solid var(--accent);
+}
+
+.rowFDD td {
+    border-left: 2px solid #a78bfa;
+}
+
+.rowMmwave td {
+    border-left: 2px solid #f6ad55;
+}
+
+.rowSub6 td {
+    border-left: 2px solid var(--accent);
+}
+
+.bandNum {
+    font-weight: 700;
+    color: var(--accent);
+    font-family: var(--font-mono);
+}
+
+.typeBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.tdd {
+    background: rgba(99, 179, 237, 0.15);
+    color: #63b3ed;
+}
+
+.fdd {
+    background: rgba(167, 139, 250, 0.15);
+    color: #a78bfa;
+}
+
+.sub6 {
+    background: rgba(99, 179, 237, 0.15);
+    color: #63b3ed;
+}
+
+.mmwave {
+    background: rgba(246, 173, 85, 0.15);
+    color: #f6ad55;
+}
+
+.mimoCell {
+    text-align: center;
+}
+
+.mimoPill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 20px;
+    background: rgba(72, 187, 120, 0.15);
+    color: #68d391;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.modBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.mod256 {
+    background: rgba(72, 187, 120, 0.15);
+    color: #68d391;
+}
+
+.mod64 {
+    background: rgba(99, 179, 237, 0.15);
+    color: #63b3ed;
+}
+
+.modNo {
+    background: rgba(252, 129, 74, 0.15);
+    color: #fc814a;
+}
+
+.modUnknown {
+    background: rgba(113, 128, 150, 0.15);
+    color: #718096;
+}
+
+.empty {
+    color: var(--muted);
+    font-style: italic;
+    padding: 1rem 0;
+}

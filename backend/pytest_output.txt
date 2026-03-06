@@ -1,0 +1,470 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\DELL\OneDrive\Desktop\Prism1\backend
+plugins: anyio-4.3.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 25 items
+
+tests/test_parser.py::TestLTEParsing::test_rat_detected_as_lte FAILED    [  4%]
+tests/test_parser.py::TestLTEParsing::test_lte_capability_present PASSED [  8%]
+tests/test_parser.py::TestLTEParsing::test_correct_band_count FAILED     [ 12%]
+tests/test_parser.py::TestLTEParsing::test_band_1_dl_mimo_4x4 FAILED     [ 16%]
+tests/test_parser.py::TestLTEParsing::test_band_41_is_tdd FAILED         [ 20%]
+tests/test_parser.py::TestLTEParsing::test_band_1_dl_256qam_supported FAILED [ 24%]
+tests/test_parser.py::TestLTEParsing::test_ue_category_extracted PASSED  [ 28%]
+tests/test_parser.py::TestLTEParsing::test_ca_combos_extracted PASSED    [ 32%]
+tests/test_parser.py::TestLTEParsing::test_summary_present PASSED        [ 36%]
+tests/test_parser.py::TestLTEParsing::test_nr_is_none FAILED             [ 40%]
+tests/test_parser.py::TestNRParsing::test_rat_detected_as_multi PASSED   [ 44%]
+tests/test_parser.py::TestNRParsing::test_lte_and_nr_present PASSED      [ 48%]
+tests/test_parser.py::TestNRParsing::test_nr_band_count FAILED           [ 52%]
+tests/test_parser.py::TestNRParsing::test_band_78_dl_mimo_4x4 FAILED     [ 56%]
+tests/test_parser.py::TestNRParsing::test_band_78_max_bw_100mhz FAILED   [ 60%]
+tests/test_parser.py::TestNRParsing::test_band_257_is_mmwave FAILED      [ 64%]
+tests/test_parser.py::TestNRParsing::test_sa_nsa_supported PASSED        [ 68%]
+tests/test_parser.py::TestDiffEngine::test_diffs_detected ERROR          [ 72%]
+tests/test_parser.py::TestDiffEngine::test_band_1_mimo_mismatch_detected ERROR [ 76%]
+tests/test_parser.py::TestDiffEngine::test_band_20_missing_detected ERROR [ 80%]
+tests/test_parser.py::TestDiffEngine::test_high_severity_exists ERROR    [ 84%]
+tests/test_parser.py::TestDiffEngine::test_ca_combo_count_mismatch ERROR [ 88%]
+tests/test_parser.py::TestEdgeCases::test_empty_input PASSED             [ 92%]
+tests/test_parser.py::TestEdgeCases::test_garbage_input PASSED           [ 96%]
+tests/test_parser.py::TestEdgeCases::test_source_file_preserved PASSED   [100%]
+
+=================================== ERRORS ====================================
+____________ ERROR at setup of TestDiffEngine.test_diffs_detected _____________
+
+self = <test_parser.TestDiffEngine object at 0x000002B358BC6D80>
+
+    def setup_method(self):
+        ref_text = _load("ue_cap_lte_example.txt")
+        dut_text = _load("ue_cap_lte_dut.txt")
+        self.ref = parse_capability_log(ref_text, source_file="ref")
+        self.dut = parse_capability_log(dut_text, source_file="dut")
+>       self.result = compare(self.dut, self.ref)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_parser.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\compare\diff.py:33: in compare
+    diffs.extend(_diff_nr(dut, ref))
+                 ^^^^^^^^^^^^^^^^^^
+src\compare\diff.py:190: in _diff_nr
+    d.extend(_scalar_diff("nr.dynamic_power_sharing_endc", dut_nr.dynamic_power_sharing_endc, ref_nr.dynamic_power_sharing_endc))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr...ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None)
+item = 'dynamic_power_sharing_endc'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra is not None:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'NRCapability' object has no attribute 'dynamic_power_sharing_endc'
+
+..\..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:767: AttributeError
+_____ ERROR at setup of TestDiffEngine.test_band_1_mimo_mismatch_detected _____
+
+self = <test_parser.TestDiffEngine object at 0x000002B358BC69C0>
+
+    def setup_method(self):
+        ref_text = _load("ue_cap_lte_example.txt")
+        dut_text = _load("ue_cap_lte_dut.txt")
+        self.ref = parse_capability_log(ref_text, source_file="ref")
+        self.dut = parse_capability_log(dut_text, source_file="dut")
+>       self.result = compare(self.dut, self.ref)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_parser.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\compare\diff.py:33: in compare
+    diffs.extend(_diff_nr(dut, ref))
+                 ^^^^^^^^^^^^^^^^^^
+src\compare\diff.py:190: in _diff_nr
+    d.extend(_scalar_diff("nr.dynamic_power_sharing_endc", dut_nr.dynamic_power_sharing_endc, ref_nr.dynamic_power_sharing_endc))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr...ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None)
+item = 'dynamic_power_sharing_endc'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra is not None:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'NRCapability' object has no attribute 'dynamic_power_sharing_endc'
+
+..\..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:767: AttributeError
+_______ ERROR at setup of TestDiffEngine.test_band_20_missing_detected ________
+
+self = <test_parser.TestDiffEngine object at 0x000002B358BC6600>
+
+    def setup_method(self):
+        ref_text = _load("ue_cap_lte_example.txt")
+        dut_text = _load("ue_cap_lte_dut.txt")
+        self.ref = parse_capability_log(ref_text, source_file="ref")
+        self.dut = parse_capability_log(dut_text, source_file="dut")
+>       self.result = compare(self.dut, self.ref)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_parser.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\compare\diff.py:33: in compare
+    diffs.extend(_diff_nr(dut, ref))
+                 ^^^^^^^^^^^^^^^^^^
+src\compare\diff.py:190: in _diff_nr
+    d.extend(_scalar_diff("nr.dynamic_power_sharing_endc", dut_nr.dynamic_power_sharing_endc, ref_nr.dynamic_power_sharing_endc))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr...ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None)
+item = 'dynamic_power_sharing_endc'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra is not None:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'NRCapability' object has no attribute 'dynamic_power_sharing_endc'
+
+..\..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:767: AttributeError
+_________ ERROR at setup of TestDiffEngine.test_high_severity_exists __________
+
+self = <test_parser.TestDiffEngine object at 0x000002B358BC6240>
+
+    def setup_method(self):
+        ref_text = _load("ue_cap_lte_example.txt")
+        dut_text = _load("ue_cap_lte_dut.txt")
+        self.ref = parse_capability_log(ref_text, source_file="ref")
+        self.dut = parse_capability_log(dut_text, source_file="dut")
+>       self.result = compare(self.dut, self.ref)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_parser.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\compare\diff.py:33: in compare
+    diffs.extend(_diff_nr(dut, ref))
+                 ^^^^^^^^^^^^^^^^^^
+src\compare\diff.py:190: in _diff_nr
+    d.extend(_scalar_diff("nr.dynamic_power_sharing_endc", dut_nr.dynamic_power_sharing_endc, ref_nr.dynamic_power_sharing_endc))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr...ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None)
+item = 'dynamic_power_sharing_endc'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra is not None:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'NRCapability' object has no attribute 'dynamic_power_sharing_endc'
+
+..\..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:767: AttributeError
+________ ERROR at setup of TestDiffEngine.test_ca_combo_count_mismatch ________
+
+self = <test_parser.TestDiffEngine object at 0x000002B358BC5E80>
+
+    def setup_method(self):
+        ref_text = _load("ue_cap_lte_example.txt")
+        dut_text = _load("ue_cap_lte_dut.txt")
+        self.ref = parse_capability_log(ref_text, source_file="ref")
+        self.dut = parse_capability_log(dut_text, source_file="dut")
+>       self.result = compare(self.dut, self.ref)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_parser.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\compare\diff.py:33: in compare
+    diffs.extend(_diff_nr(dut, ref))
+                 ^^^^^^^^^^^^^^^^^^
+src\compare\diff.py:190: in _diff_nr
+    d.extend(_scalar_diff("nr.dynamic_power_sharing_endc", dut_nr.dynamic_power_sharing_endc, ref_nr.dynamic_power_sharing_endc))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr...ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None)
+item = 'dynamic_power_sharing_endc'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra is not None:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'NRCapability' object has no attribute 'dynamic_power_sharing_endc'
+
+..\..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:767: AttributeError
+================================== FAILURES ===================================
+___________________ TestLTEParsing.test_rat_detected_as_lte ___________________
+
+self = <test_parser.TestLTEParsing object at 0x000002B358BBD790>
+
+    def test_rat_detected_as_lte(self):
+>       assert self.cap.rat == "LTE", f"Expected LTE, got {self.cap.rat}"
+E       AssertionError: Expected LTE, got MULTI
+E       assert 'MULTI' == 'LTE'
+E         
+E         - LTE
+E         + MULTI
+
+tests\test_parser.py:43: AssertionError
+___________________ TestLTEParsing.test_correct_band_count ____________________
+
+self = <test_parser.TestLTEParsing object at 0x000002B358BBD160>
+
+    def test_correct_band_count(self):
+>       assert len(self.cap.lte.supported_bands) == 6, (
+            f"Expected 6 bands, got {len(self.cap.lte.supported_bands)}: "
+            f"{[b.band for b in self.cap.lte.supported_bands]}"
+        )
+E       AssertionError: Expected 6 bands, got 0: []
+E       assert 0 == 6
+E        +  where 0 = len([])
+E        +    where [] = LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[], ca_combos=[LTECACombo(bands=[1, 3], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True).supported_bands
+E        +      where LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[], ca_combos=[LTECACombo(bands=[1, 3], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True) = NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[], ca_combos=[LTECACombo(bands=[1, 3], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True), nr=NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[1, 7], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[3, 20], nr=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None), features=None, ue_capabilities_summary={'lte': {'supported_bands': [], 'total_bands': 0, 'ue_category_dl': '6', 'features_detected': {'256QAM_DL': False, '64QAM_UL': False, 'MIMO_DL_max': 'unknown', 'CA_combos': 3}}, 'nr': {'supported_ban...band_combination[0].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[0].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[0]': '1', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[1]': '7', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[0]': '3', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[1]': '20', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_ul': 'A', 'ue_eutra_capability.feature_group_indicators': '1100111001010011101010100001', 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]).lte
+E        +        where NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[], ca_combos=[LTECACombo(bands=[1, 3], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True), nr=NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[1, 7], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[3, 20], nr=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None), features=None, ue_capabilities_summary={'lte': {'supported_bands': [], 'total_bands': 0, 'ue_category_dl': '6', 'features_detected': {'256QAM_DL': False, '64QAM_UL': False, 'MIMO_DL_max': 'unknown', 'CA_combos': 3}}, 'nr': {'supported_ban...band_combination[0].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[0].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[0]': '1', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[1]': '7', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[0]': '3', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[1]': '20', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_ul': 'A', 'ue_eutra_capability.feature_group_indicators': '1100111001010011101010100001', 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]) = <test_parser.TestLTEParsing object at 0x000002B358BBD160>.cap
+
+tests\test_parser.py:49: AssertionError
+___________________ TestLTEParsing.test_band_1_dl_mimo_4x4 ____________________
+
+self = <test_parser.TestLTEParsing object at 0x000002B358BBCE00>
+
+    def test_band_1_dl_mimo_4x4(self):
+        b1 = next((b for b in self.cap.lte.supported_bands if b.band == 1), None)
+>       assert b1 is not None, "Band 1 not found"
+E       AssertionError: Band 1 not found
+E       assert None is not None
+
+tests\test_parser.py:56: AssertionError
+_____________________ TestLTEParsing.test_band_41_is_tdd ______________________
+
+self = <test_parser.TestLTEParsing object at 0x000002B358BBCAA0>
+
+    def test_band_41_is_tdd(self):
+        b41 = next((b for b in self.cap.lte.supported_bands if b.band == 41), None)
+>       assert b41 is not None, "Band 41 not found"
+E       AssertionError: Band 41 not found
+E       assert None is not None
+
+tests\test_parser.py:61: AssertionError
+_______________ TestLTEParsing.test_band_1_dl_256qam_supported ________________
+
+self = <test_parser.TestLTEParsing object at 0x000002B358BBC740>
+
+    def test_band_1_dl_256qam_supported(self):
+        b1 = next((b for b in self.cap.lte.supported_bands if b.band == 1), None)
+>       assert b1 is not None
+E       assert None is not None
+
+tests\test_parser.py:66: AssertionError
+_______________________ TestLTEParsing.test_nr_is_none ________________________
+
+self = <test_parser.TestLTEParsing object at 0x000002B358BBC5C0>
+
+    def test_nr_is_none(self):
+>       assert self.cap.nr is None
+E       AssertionError: assert NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[1, 7], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[3, 20], nr=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None) is None
+E        +  where NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[1, 7], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[3, 20], nr=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None) = NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[], ca_combos=[LTECACombo(bands=[1, 3], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True), nr=NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[1, 7], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[3, 20], nr=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None), features=None, ue_capabilities_summary={'lte': {'supported_bands': [], 'total_bands': 0, 'ue_category_dl': '6', 'features_detected': {'256QAM_DL': False, '64QAM_UL': False, 'MIMO_DL_max': 'unknown', 'CA_combos': 3}}, 'nr': {'supported_ban...band_combination[0].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[0].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[0]': '1', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[1]': '7', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[0]': '3', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[1]': '20', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_ul': 'A', 'ue_eutra_capability.feature_group_indicators': '1100111001010011101010100001', 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]).nr
+E        +    where NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[], ca_combos=[LTECACombo(bands=[1, 3], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True), nr=NRCapability(sa_supported=None, nsa_supported=False, supported_bands=[], ca_combos=[NRCACombo(bands=[], lte=[1, 3], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[1, 7], nr=[], dl_bw_class=None, ul_bw_class=None), NRCACombo(bands=[], lte=[3, 20], nr=[], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=None, max_num_ccs_dl=None, max_num_ccs_ul=None, diff_numerology_within_pucch=None), features=None, ue_capabilities_summary={'lte': {'supported_bands': [], 'total_bands': 0, 'ue_category_dl': '6', 'features_detected': {'256QAM_DL': False, '64QAM_UL': False, 'MIMO_DL_max': 'unknown', 'CA_combos': 3}}, 'nr': {'supported_ban...band_combination[0].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[0].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[0]': '1', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].band_eutra[1]': '7', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[1].bw_class_ul': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[0]': '3', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].band_eutra[1]': '20', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_dl': 'A', 'ue_eutra_capability.rf_parameters.supported_band_combination_list.band_combination[2].bw_class_ul': 'A', 'ue_eutra_capability.feature_group_indicators': '1100111001010011101010100001', 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]) = <test_parser.TestLTEParsing object at 0x000002B358BBC5C0>.cap
+
+tests\test_parser.py:82: AssertionError
+______________________ TestNRParsing.test_nr_band_count _______________________
+
+self = <test_parser.TestNRParsing object at 0x000002B358BBD8E0>
+
+    def test_nr_band_count(self):
+>       assert len(self.cap.nr.supported_bands) == 4, (
+            f"Expected 4 NR bands, got {len(self.cap.nr.supported_bands)}: "
+            f"{[b.band for b in self.cap.nr.supported_bands]}"
+        )
+E       AssertionError: Expected 4 NR bands, got 0: []
+E       assert 0 == 4
+E        +  where 0 = len([])
+E        +    where [] = NRCapability(sa_supported=True, nsa_supported=True, supported_bands=[], ca_combos=[NRCACombo(bands=[78, 41], lte=[], nr=[78, 41], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=False, max_num_ccs_dl=4, max_num_ccs_ul=2, diff_numerology_within_pucch=None).supported_bands
+E        +      where NRCapability(sa_supported=True, nsa_supported=True, supported_bands=[], ca_combos=[NRCACombo(bands=[78, 41], lte=[], nr=[78, 41], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=False, max_num_ccs_dl=4, max_num_ccs_ul=2, diff_numerology_within_pucch=None) = NormalizedCapability(source_file='ue_cap_nr_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='12', ue_category_ul=None, supported_bands=[], ca_combos=[], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=None, feature_group_indicators=None, supported_roh_c=None, supported_rlc_um=None), nr=NRCapability(sa_supported=True, nsa_supported=True, supported_bands=[], ca_combos=[NRCACombo(bands=[78, 41], lte=[], nr=[78, 41], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=False, max_num_ccs_dl=4, max_num_ccs_ul=2, diff_numerology_within_pucch=None), features=None, ue_capabilities_summary={'lte': {'supported_bands': [], 'total_bands': 0, 'ue_category_dl': '12', 'features_detected': {'256QAM_DL': False, '64QAM_UL': False, 'MIMO_DL_max': 'unknown', 'CA_combos': 0}}, 'nr': {'supported_bands': [], 'total_bands': 0, 'sa_supported': True, 'nsa_supported': True, 'features_detected': {'MIMO_DL_max': 'unknown', 'mmwave_bands': 0, 'CA_combos': 1}}}, raw_fields={'ue_eutra_capability.ue_category': '12', 'ue_eutra_capability.ue_category_ul': '13', 'ue_eutra_capability.rf_parameters.supported_band_list_eutra.bandeutra[0].band_eutra': '1', 'ue_eutra_capa...d_band_list_nr.bandnr[2].ul_256qam': 'false', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].band_nr': '257', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].scs_supported': '120', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].max_bw_dl': '400', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].max_bw_ul': '400', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].dl_mimo_layers': '2', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].ul_mimo_layers': '1', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].dl_256qam': 'true', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].ul_256qam': 'false', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.band_nr[0]': '78', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.band_nr[1]': '41', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.dl_bw_class': 'A', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.ul_bw_class': 'A'}, validation_issues=[]).nr
+E        +        where NormalizedCapability(source_file='ue_cap_nr_example.txt', rat='MULTI', lte=LTECapability(ue_category_dl='12', ue_category_ul=None, supported_bands=[], ca_combos=[], dl_modulation=['QPSK', '16QAM', '64QAM', '256QAM'], ul_modulation=[], ca_supported=None, feature_group_indicators=None, supported_roh_c=None, supported_rlc_um=None), nr=NRCapability(sa_supported=True, nsa_supported=True, supported_bands=[], ca_combos=[NRCACombo(bands=[78, 41], lte=[], nr=[78, 41], dl_bw_class=None, ul_bw_class=None)], pdcp_duplication=False, max_num_ccs_dl=4, max_num_ccs_ul=2, diff_numerology_within_pucch=None), features=None, ue_capabilities_summary={'lte': {'supported_bands': [], 'total_bands': 0, 'ue_category_dl': '12', 'features_detected': {'256QAM_DL': False, '64QAM_UL': False, 'MIMO_DL_max': 'unknown', 'CA_combos': 0}}, 'nr': {'supported_bands': [], 'total_bands': 0, 'sa_supported': True, 'nsa_supported': True, 'features_detected': {'MIMO_DL_max': 'unknown', 'mmwave_bands': 0, 'CA_combos': 1}}}, raw_fields={'ue_eutra_capability.ue_category': '12', 'ue_eutra_capability.ue_category_ul': '13', 'ue_eutra_capability.rf_parameters.supported_band_list_eutra.bandeutra[0].band_eutra': '1', 'ue_eutra_capa...d_band_list_nr.bandnr[2].ul_256qam': 'false', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].band_nr': '257', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].scs_supported': '120', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].max_bw_dl': '400', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].max_bw_ul': '400', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].dl_mimo_layers': '2', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].ul_mimo_layers': '1', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].dl_256qam': 'true', 'ue_nr_capability.rf_parameters_nr.supported_band_list_nr.bandnr[3].ul_256qam': 'false', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.band_nr[0]': '78', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.band_nr[1]': '41', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.dl_bw_class': 'A', 'ue_nr_capability.rf_parameters_nr.supported_band_combination_list_nr.band_combination.ul_bw_class': 'A'}, validation_issues=[]) = <test_parser.TestNRParsing object at 0x000002B358BBD8E0>.cap
+
+tests\test_parser.py:102: AssertionError
+___________________ TestNRParsing.test_band_78_dl_mimo_4x4 ____________________
+
+self = <test_parser.TestNRParsing object at 0x000002B358BC7CB0>
+
+    def test_band_78_dl_mimo_4x4(self):
+        b78 = next((b for b in self.cap.nr.supported_bands if b.band == 78), None)
+>       assert b78 is not None, "NR Band 78 not found"
+E       AssertionError: NR Band 78 not found
+E       assert None is not None
+
+tests\test_parser.py:109: AssertionError
+__________________ TestNRParsing.test_band_78_max_bw_100mhz ___________________
+
+self = <test_parser.TestNRParsing object at 0x000002B358BC7AA0>
+
+    def test_band_78_max_bw_100mhz(self):
+        b78 = next((b for b in self.cap.nr.supported_bands if b.band == 78), None)
+>       assert b78 is not None
+E       assert None is not None
+
+tests\test_parser.py:114: AssertionError
+____________________ TestNRParsing.test_band_257_is_mmwave ____________________
+
+self = <test_parser.TestNRParsing object at 0x000002B358BC7650>
+
+    def test_band_257_is_mmwave(self):
+        b257 = next((b for b in self.cap.nr.supported_bands if b.band == 257), None)
+>       assert b257 is not None, "NR Band 257 not found"
+E       AssertionError: NR Band 257 not found
+E       assert None is not None
+
+tests\test_parser.py:119: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_parser.py::TestLTEParsing::test_rat_detected_as_lte - Asser...
+FAILED tests/test_parser.py::TestLTEParsing::test_correct_band_count - Assert...
+FAILED tests/test_parser.py::TestLTEParsing::test_band_1_dl_mimo_4x4 - Assert...
+FAILED tests/test_parser.py::TestLTEParsing::test_band_41_is_tdd - AssertionE...
+FAILED tests/test_parser.py::TestLTEParsing::test_band_1_dl_256qam_supported
+FAILED tests/test_parser.py::TestLTEParsing::test_nr_is_none - AssertionError...
+FAILED tests/test_parser.py::TestNRParsing::test_nr_band_count - AssertionErr...
+FAILED tests/test_parser.py::TestNRParsing::test_band_78_dl_mimo_4x4 - Assert...
+FAILED tests/test_parser.py::TestNRParsing::test_band_78_max_bw_100mhz - asse...
+FAILED tests/test_parser.py::TestNRParsing::test_band_257_is_mmwave - Asserti...
+ERROR tests/test_parser.py::TestDiffEngine::test_diffs_detected - AttributeEr...
+ERROR tests/test_parser.py::TestDiffEngine::test_band_1_mimo_mismatch_detected
+ERROR tests/test_parser.py::TestDiffEngine::test_band_20_missing_detected - A...
+ERROR tests/test_parser.py::TestDiffEngine::test_high_severity_exists - Attri...
+ERROR tests/test_parser.py::TestDiffEngine::test_ca_combo_count_mismatch - At...
+=================== 10 failed, 10 passed, 5 errors in 0.88s ===================

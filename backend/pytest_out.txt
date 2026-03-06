@@ -1,0 +1,30 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\DELL\OneDrive\Desktop\Prism1\backend
+plugins: anyio-4.3.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 26 items
+
+tests\test_audit.py .                                                    [  3%]
+tests\test_parser.py .......F.................                           [100%]
+
+================================== FAILURES ===================================
+___________________ TestLTEParsing.test_ca_combos_extracted ___________________
+
+self = <test_parser.TestLTEParsing object at 0x000001F494A38590>
+
+    def test_ca_combos_extracted(self):
+>       assert len(self.cap.lte.ca_combos) == 3, (
+            f"Expected 3 CA combos, got {len(self.cap.lte.ca_combos)}"
+        )
+E       AssertionError: Expected 3 CA combos, got 4
+E       assert 4 == 3
+E        +  where 4 = len([LTECACombo(bands=[1, 3, 1, 7, 3, 20], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 3], bw_class_dl=None,...Combo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)])
+E        +    where [LTECACombo(bands=[1, 3, 1, 7, 3, 20], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[1, 3], bw_class_dl=None,...Combo(bands=[1, 7], bw_class_dl=None, bw_class_ul=None), LTECACombo(bands=[3, 20], bw_class_dl=None, bw_class_ul=None)] = LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[LTEBandInfo(band=1, band_type='FDD', dl_mimo_l...a_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True).ca_combos
+E        +      where LTECapability(ue_category_dl='6', ue_category_ul=None, supported_bands=[LTEBandInfo(band=1, band_type='FDD', dl_mimo_l...a_supported=True, feature_group_indicators='1100111001010011101010100001', supported_roh_c=True, supported_rlc_um=True) = NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='LTE', lte=LTECapability(ue_category_dl='6', ue_categor..., 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]).lte
+E        +        where NormalizedCapability(source_file='ue_cap_lte_example.txt', rat='LTE', lte=LTECapability(ue_category_dl='6', ue_categor..., 'ue_eutra_capability.supported_roh_c': 'true', 'ue_eutra_capability.supported_rlc_um': 'true'}, validation_issues=[]) = <test_parser.TestLTEParsing object at 0x000001F494A38590>.cap
+
+tests\test_parser.py:73: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_parser.py::TestLTEParsing::test_ca_combos_extracted - Asser...
+======================== 1 failed, 25 passed in 0.48s =========================

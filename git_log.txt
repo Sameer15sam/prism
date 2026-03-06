@@ -1,0 +1,24 @@
+﻿commit 9df65364eaf6f40653679685b6205facf8afada2
+Author: Sameer15sam <sameer15sammu@gmail.com>
+Date:   Tue Dec 9 01:51:48 2025 +0530
+
+    Initial push to scraper repo
+
+ OneDrive/Desktop/b/sih25162_frontend-backend-docs  |   1 -
+ .../scapper/scap/__pycache__/main.cpython-311.pyc  | Bin 0 -> 2104 bytes
+ .../__pycache__/mouser_service.cpython-311.pyc     | Bin 0 -> 1068 bytes
+ .../scap/__pycache__/patterns.cpython-311.pyc      | Bin 0 -> 1345 bytes
+ OneDrive/Desktop/scapper/scap/main.py              |  41 +++++++++++++++++++++
+ OneDrive/Desktop/scapper/scap/mouser_service.py    |  27 ++++++++++++++
+ OneDrive/Desktop/scapper/scap/patterns.py          |  33 +++++++++++++++++
+ OneDrive/Desktop/scapper/scap/requirements.txt     |   4 ++
+ 8 files changed, 105 insertions(+), 1 deletion(-)
+
+commit dd4a9eafa0be4013c4783b81ddc1b884459ff2cf
+Author: Sameer15sam <sameer15sammu@gmail.com>
+Date:   Mon Dec 8 15:16:54 2025 +0530
+
+    Updated project
+
+ OneDrive/Desktop/b/sih25162_frontend-backend-docs | 1 +
+ 1 file changed, 1 insertion(+)

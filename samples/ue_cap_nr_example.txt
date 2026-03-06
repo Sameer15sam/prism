@@ -1,0 +1,107 @@
+# UE Capability Parser – Synthetic Sample Logs
+#
+# This is a HANDWRITTEN, minimal decoded RRC UE Capability log
+# simulating a decoded 5G NR capability for a mid-range device.
+# Covers both NSA (EN-DC with LTE anchor) and SA mode.
+#
+# Format: key : value pairs, nested blocks with { }
+# This is NOT real proprietary data. It is a synthetic example for testing.
+#
+# Spec reference: 3GPP TS 38.331 §6.3.6 (UE-NR-Capability)
+#                 3GPP TS 38.306        (NR UE Radio Access Capabilities)
+#                 3GPP TS 37.340        (EN-DC / Multi-RAT)
+
+# ── LTE anchor (required for EN-DC / NSA mode) ──────────────────────────────
+ue_eutra_capability {
+    ue_category : 12
+    ue_category_ul : 13
+
+    rf_parameters {
+        supported_band_list_eutra {
+            bandEUTRA {
+                band_eutra : 1
+                dl_mimo_layers : 4
+                ul_mimo_layers : 2
+                dl_256qam : true
+                ul_64qam : true
+            }
+            bandEUTRA {
+                band_eutra : 3
+                dl_mimo_layers : 4
+                ul_mimo_layers : 2
+                dl_256qam : true
+                ul_64qam : true
+            }
+            bandEUTRA {
+                band_eutra : 41
+                dl_mimo_layers : 4
+                ul_mimo_layers : 2
+                dl_256qam : true
+                ul_64qam : true
+            }
+        }
+    }
+}
+
+# ── NR (5G) capabilities ─────────────────────────────────────────────────────
+ue_nr_capability {
+    sa_supported  : true
+    nsa_supported : true
+    pdcp_duplication : false
+    max_num_ccs_dl : 4
+    max_num_ccs_ul : 2
+
+    rf_parameters_nr {
+        supported_band_list_nr {
+            bandNR {
+                band_nr : 78
+                scs_supported : 30
+                max_bw_dl : 100
+                max_bw_ul : 100
+                dl_mimo_layers : 4
+                ul_mimo_layers : 2
+                dl_256qam : true
+                ul_256qam : false
+            }
+            bandNR {
+                band_nr : 41
+                scs_supported : 30
+                max_bw_dl : 100
+                max_bw_ul : 100
+                dl_mimo_layers : 4
+                ul_mimo_layers : 2
+                dl_256qam : true
+                ul_256qam : false
+            }
+            bandNR {
+                band_nr : 1
+                scs_supported : 15
+                max_bw_dl : 20
+                max_bw_ul : 20
+                dl_mimo_layers : 2
+                ul_mimo_layers : 1
+                dl_256qam : false
+                ul_256qam : false
+            }
+            bandNR {
+                band_nr : 257
+                scs_supported : 120
+                max_bw_dl : 400
+                max_bw_ul : 400
+                dl_mimo_layers : 2
+                ul_mimo_layers : 1
+                dl_256qam : true
+                ul_256qam : false
+            }
+        }
+
+        supported_band_combination_list_nr {
+            band_combination {
+                band_nr : 78
+                band_nr : 41
+                dl_bw_class : A
+                ul_bw_class : A
+            }
+        }
+    }
+}

@@ -1,0 +1,224 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeUp 0.3s ease;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 50vh;
+    color: var(--muted);
+}
+
+.emptyIcon {
+    font-size: 3rem;
+}
+
+.link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    width: fit-content;
+}
+
+.backBtn:hover {
+    color: var(--accent);
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.downloadBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    background: rgba(99, 179, 237, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(99, 179, 237, 0.25);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.downloadBtn:hover {
+    background: rgba(99, 179, 237, 0.2);
+    border-color: var(--accent);
+}
+
+.filename {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+}
+
+.fileIcon {
+    font-size: 0.95rem;
+}
+
+/* Validation */
+.issueBox {
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 1rem 1.25rem;
+}
+
+.issueError {
+    background: rgba(248, 113, 113, 0.07);
+    border-color: rgba(248, 113, 113, 0.3);
+}
+
+.issueWarn {
+    background: rgba(246, 173, 85, 0.07);
+    border-color: rgba(246, 173, 85, 0.3);
+}
+
+.issueTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.issueCount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(248, 113, 113, 0.2);
+    color: var(--danger);
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.issueList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.issueItem {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.issuePath {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--danger);
+    background: rgba(248, 113, 113, 0.1);
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.issueSpec {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: auto;
+}
+
+/* Sections */
+.section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.sectionTitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* CA Combos */
+.comboGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.comboCard {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background: rgba(99, 179, 237, 0.07);
+    border: 1px solid rgba(99, 179, 237, 0.2);
+    border-radius: 8px;
+    font-size: 0.78rem;
+}
+
+.comboCardNR {
+    background: rgba(167, 139, 250, 0.07);
+    border-color: rgba(167, 139, 250, 0.25);
+}
+
+.comboLabel {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+.comboBands {
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent);
+}
+
+.comboDetail {
+    font-size: 0.72rem;
+    color: var(--muted);
+}
