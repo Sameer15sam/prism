@@ -112,6 +112,10 @@ class NormalizedCapability(BaseModel):
     )
     raw_fields: Dict[str, Any]                 = Field(default_factory=dict)
     validation_issues: List[ValidationIssue]   = Field(default_factory=list)
+    mrdc_combos: List[Dict[str, Any]]          = Field(
+        default_factory=list,
+        description="EN-DC band combinations from UE-MRDC-Capability"
+    )
 
 
 # ─────────────────────────────────────────────

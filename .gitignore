@@ -19,6 +19,10 @@ node_modules/
 dist/
 .cache/
 *.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Environment & Secrets
 .env
@@ -47,3 +51,26 @@ logs/
 .pytest_cache/
 htmlcov/
 .coverage
+coverage.xml
+
+# Project Specific Debug & Output Files
+backend/*out*.txt
+backend/pytest_*.txt
+backend/out*.json
+backend/tree*.json
+backend/*_results*.txt
+backend/*_res.txt
+backend/format_*.txt
+backend/checklist_*.txt
+backend/check_16_out.txt
+backend/test_formats_out.txt
+backend/verify_out.txt
+backend/test_result.log
+backend/test_output_ascii.txt
+backend/tree.json
+backend/tree_output.json
+backend/tree_utf8.json
+backend/out.json
+backend/out2.json
+frontend/build_output.txt
+git_log.txt

@@ -147,6 +147,9 @@ class _Parser:
         # ── WORD → could be: NAME followed by many things
         if tok[0] == "WORD":
             name = self._eat()[1]
+            # Skip stray punctuation tokens (trailing commas/semicolons after closing braces)
+            if name.strip(',;') == '':
+                return
             norm_name = _norm(name)
             next_tok = self._peek()
 
@@ -197,7 +200,7 @@ class _Parser:
 
             # case: NAME VALUE  →  key-value pair
             if next_tok and next_tok[0] in ("WORD", "STRING"):
-                value_str = self._eat()[1].strip('"')
+                value_str = self._eat()[1].strip('",')  # strip quotes AND trailing commas
 
                 # Peek ahead: is there a LBRACE next? Then it's NAME TYPE { block }
                 further = self._peek()
@@ -211,6 +214,14 @@ class _Parser:
                     body["__type__"] = value_str
                     self._set(parent, norm_name, value_str)
                     return
+
+                # Check for 'fr1 : mhz100' pattern — WORD followed by COLON then WORD
+                if further and further[0] == "COLON":
+                    self._eat()  # consume the COLON
+                    even_further = self._peek()
+                    if even_further and even_further[0] in ("WORD", "STRING"):
+                        extra = self._eat()[1].strip('",')
+                        value_str = value_str + ' : ' + extra
 
                 # Plain KV
                 self._set(parent, norm_name, value_str)

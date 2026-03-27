@@ -1,0 +1,255 @@
+{
+  "source_file": "input.txt",
+  "rat": "MULTI",
+  "lte": {
+    "ue_category_dl": "4",
+    "supported_bands": [
+      {
+        "band": 2,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 4,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 28,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 5,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 41,
+        "band_type": "TDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 13,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 25,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 1,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 8,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 20,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 26,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 38,
+        "band_type": "TDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 7,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 39,
+        "band_type": "TDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 12,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 14,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 30,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 48,
+        "band_type": "TDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 64,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      },
+      {
+        "band": 3,
+        "band_type": "FDD",
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": null,
+        "ul_64qam": null,
+        "bandwidth_class": null,
+        "power_class": null,
+        "half_duplex": false
+      }
+    ],
+    "ca_combos": [
+      {
+        "bands": [
+          2
+        ],
+        "bw_class_dl": "a",
+        "bw_class_ul": "a"
+      }
+    ]
+  },
+  "nr": {
+    "sa_supported": true,
+    "nsa_supported": true,
+    "supported_bands": [
+      {
+        "band": 258,
+        "scs_supported": [],
+        "max_bw_dl": null,
+        "max_bw_ul": null,
+        "dl_mimo_layers": null,
+        "ul_mimo_layers": null,
+        "dl_256qam": false,
+        "ul_256qam": null,
+        "mmwave": true
+      }
+    ]
+  }
+}
